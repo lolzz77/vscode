@@ -43,12 +43,14 @@ ModesRegistry.registerLanguage({
 Registry.as<IWorkbenchContributionsRegistry>(WorkbenchExtensions.Workbench)
 	.registerWorkbenchContribution(DirtyDiffWorkbenchController, LifecyclePhase.Restored);
 
-const sourceControlViewIcon = registerIcon('source-control-view-icon', Codicon.sourceControl, localize('sourceControlViewIcon', 'View icon of the Source Control view.'));
+// icon here
+const sourceControlViewIcon = registerIcon('source-control-view-icon', Codicon.gitBranchCreate, localize('sourceControlViewIcon', 'View icon of the Source Control view.'));
 
 const viewContainer = Registry.as<IViewContainersRegistry>(ViewContainerExtensions.ViewContainersRegistry).registerViewContainer({
 	id: VIEWLET_ID,
-	title: localize('source control', "Source Control"),
-	ctorDescriptor: new SyncDescriptor(SCMViewPaneContainer),
+	// this is the name when u hover over the `source control` icon
+	title: localize('haiye a', "haiye b"),
+	ctorDescriptor: new SyncDescriptor(),
 	storageId: 'workbench.scm.views.state',
 	icon: sourceControlViewIcon,
 	alwaysUseContainerInfo: true,

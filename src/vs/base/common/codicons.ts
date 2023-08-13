@@ -68,6 +68,7 @@ export const Codicon = {
 	gitBranch: register('git-branch', 0xea68),
 	gitBranchCreate: register('git-branch-create', 0xea68),
 	gitBranchDelete: register('git-branch-delete', 0xea68),
+	// source control icon here
 	sourceControl: register('source-control', 0xea68),
 	mirror: register('mirror', 0xea69),
 	mirrorPublic: register('mirror-public', 0xea69),
