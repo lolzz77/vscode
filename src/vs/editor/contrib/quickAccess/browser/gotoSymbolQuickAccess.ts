@@ -81,7 +81,7 @@ export abstract class AbstractGotoSymbolQuickAccessProvider extends AbstractEdit
 		const disposables = new DisposableStore();
 
 		// Generic pick for not having any symbol information
-		this.provideLabelPick(picker, localize('cannotRunGotoSymbolWithoutSymbolProvider', "The active text editor does not provide symbol information."));
+		this.provideLabelPick(picker, localize('cannotRunGotoSymbolWithoutSymbolProvider', "FK U"));
 
 		// Wait for changes to the registry and see if eventually
 		// we do get symbols. This can happen if the picker is opened
