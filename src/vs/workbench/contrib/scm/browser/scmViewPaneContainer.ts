@@ -45,6 +45,6 @@ export class SCMViewPaneContainer extends ViewPaneContainer {
 	}
 
 	override getTitle(): string {
-		return localize('source control', "Source Control");
+		return localize('FK U A', "FK U B");
 	}
 }

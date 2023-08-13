@@ -107,6 +107,7 @@ export class QuickInputService extends Themable implements IQuickInputService {
 
 		// Context keys
 		this._register(controller.onShow(() => {
+			console.log('when u run CTRL + P, this will fire');
 			this.resetContextKeys();
 			this._onShow.fire();
 		}));
