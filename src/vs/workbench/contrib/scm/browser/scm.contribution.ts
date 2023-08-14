@@ -44,13 +44,13 @@ Registry.as<IWorkbenchContributionsRegistry>(WorkbenchExtensions.Workbench)
 	.registerWorkbenchContribution(DirtyDiffWorkbenchController, LifecyclePhase.Restored);
 
 // icon here
-const sourceControlViewIcon = registerIcon('source-control-view-icon', Codicon.gitBranchCreate, localize('sourceControlViewIcon', 'View icon of the Source Control view.'));
+const sourceControlViewIcon = registerIcon('source-control-view-icon', Codicon.sourceControl, localize('sourceControlViewIcon', 'View icon of the Source Control view.'));
 
 const viewContainer = Registry.as<IViewContainersRegistry>(ViewContainerExtensions.ViewContainersRegistry).registerViewContainer({
 	id: VIEWLET_ID,
 	// this is the name when u hover over the `source control` icon
 	title: localize('haiye a', "haiye b"),
-	ctorDescriptor: new SyncDescriptor(),
+	ctorDescriptor: new SyncDescriptor(SCMViewPaneContainer),
 	storageId: 'workbench.scm.views.state',
 	icon: sourceControlViewIcon,
 	alwaysUseContainerInfo: true,
@@ -75,6 +75,9 @@ viewsRegistry.registerViewWelcomeContent(VIEW_PANE_ID, {
 	when: ContextKeyExpr.and(ContextKeyExpr.equals('scm.providerCount', 0), WorkspaceTrustContext.IsEnabled, WorkspaceTrustContext.IsTrusted.toNegated())
 });
 
+// here register it to the sidebar
+// usually will be in file that has name 'contribution'
+// scm in the file name refers to source control manager?
 viewsRegistry.registerViews([{
 	id: VIEW_PANE_ID,
 	name: localize('source control', "Source Control"),

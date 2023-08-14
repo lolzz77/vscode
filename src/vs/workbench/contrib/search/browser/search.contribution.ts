@@ -54,6 +54,7 @@ const SEARCH_MODE_CONFIG = 'search.mode';
 
 const viewContainer = Registry.as<IViewContainersRegistry>(ViewExtensions.ViewContainersRegistry).registerViewContainer({
 	id: VIEWLET_ID,
+	// search name here
 	title: { value: nls.localize('name', "Search"), original: 'Search' },
 	ctorDescriptor: new SyncDescriptor(ViewPaneContainer, [VIEWLET_ID, { mergeViewWithContainerWhenSingleView: true }]),
 	hideIfEmpty: true,
@@ -81,6 +82,7 @@ const viewDescriptor: IViewDescriptor = {
 };
 
 // Register search default location to sidebar
+// this one register it to the sidebar
 Registry.as<IViewsRegistry>(ViewExtensions.ViewsRegistry).registerViews([viewDescriptor], viewContainer);
 
 // Migrate search location setting to new model
