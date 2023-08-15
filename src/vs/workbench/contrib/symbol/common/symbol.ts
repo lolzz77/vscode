@@ -3,15 +3,15 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 
-// import { URI } from 'vs/base/common/uri';
-// import { createDecorator } from 'vs/platform/instantiation/common/instantiation';
-// import { Event } from 'vs/base/common/event';
-// import { IDisposable } from 'vs/base/common/lifecycle';
-// import { Command } from 'vs/editor/common/languages';
-// import { ISequence } from 'vs/base/common/sequence';
+import { URI } from 'vs/base/common/uri';
+import { createDecorator } from 'vs/platform/instantiation/common/instantiation';
+import { Event } from 'vs/base/common/event';
+import { IDisposable } from 'vs/base/common/lifecycle';
+import { Command } from 'vs/editor/common/languages';
+import { ISequence } from 'vs/base/common/sequence';
 // import { IAction } from 'vs/base/common/actions';
 // import { IMenu } from 'vs/platform/actions/common/actions';
-// import { ThemeIcon } from 'vs/base/common/themables';
+import { ThemeIcon } from 'vs/base/common/themables';
 // import { IMarkdownString } from 'vs/base/common/htmlContent';
 
 export const VIEWLET_ID = 'workbench.view.symbol';
@@ -22,56 +22,56 @@ export const REPOSITORIES_VIEW_PANE_ID = 'workbench.symbol.repositories';
 // 	getBaselineResource(resource: URI): Promise<URI>;
 // }
 
-// export const ISymbolService = createDecorator<ISymbolService>('symbol');
+export const ISymbolService = createDecorator<ISymbolService>('symbol');
 
-// export interface ISymbolResourceDecorations {
-// 	icon?: URI | ThemeIcon;
-// 	iconDark?: URI | ThemeIcon;
-// 	tooltip?: string;
-// 	strikeThrough?: boolean;
-// 	faded?: boolean;
-// }
+export interface ISymbolResourceDecorations {
+	icon?: URI | ThemeIcon;
+	iconDark?: URI | ThemeIcon;
+	tooltip?: string;
+	strikeThrough?: boolean;
+	faded?: boolean;
+}
 
-// export interface ISymbolResource {
-// 	readonly resourceGroup: ISymbolResourceGroup;
-// 	readonly sourceUri: URI;
-// 	readonly decorations: ISymbolResourceDecorations;
-// 	readonly contextValue: string | undefined;
-// 	readonly command: Command | undefined;
-// 	open(preserveFocus: boolean): Promise<void>;
-// }
+export interface ISymbolResource {
+	readonly resourceGroup: ISymbolResourceGroup;
+	readonly sourceUri: URI;
+	readonly decorations: ISymbolResourceDecorations;
+	readonly contextValue: string | undefined;
+	readonly command: Command | undefined;
+	open(preserveFocus: boolean): Promise<void>;
+}
 
-// export interface ISymbolResourceGroup extends ISequence<ISymbolResource> {
-// 	readonly provider: ISymbolProvider;
-// 	readonly label: string;
-// 	readonly id: string;
-// 	readonly hideWhenEmpty: boolean;
-// 	readonly onDidChange: Event<void>;
-// }
+export interface ISymbolResourceGroup extends ISequence<ISymbolResource> {
+	readonly provider: ISymbolProvider;
+	readonly label: string;
+	readonly id: string;
+	readonly hideWhenEmpty: boolean;
+	readonly onDidChange: Event<void>;
+}
 
-// export interface ISymbolProvider extends IDisposable {
-// 	readonly label: string;
-// 	readonly id: string;
-// 	readonly contextValue: string;
+export interface ISymbolProvider extends IDisposable {
+	readonly label: string;
+	readonly id: string;
+	readonly contextValue: string;
 
-// 	readonly groups: ISequence<ISymbolResourceGroup>;
+	readonly groups: ISequence<ISymbolResourceGroup>;
 
-// 	// TODO@Joao: remove
-// 	readonly onDidChangeResources: Event<void>;
+	// TODO@Joao: remove
+	readonly onDidChangeResources: Event<void>;
 
-// 	readonly rootUri?: URI;
-// 	readonly inputBoxDocumentUri: URI;
-// 	readonly count?: number;
-// 	readonly commitTemplate: string;
-// 	readonly onDidChangeCommitTemplate: Event<string>;
-// 	readonly onDidChangeStatusBarCommands?: Event<readonly Command[]>;
-// 	readonly acceptInputCommand?: Command;
-// 	readonly actionButton?: ISymbolActionButtonDescriptor;
-// 	readonly statusBarCommands?: readonly Command[];
-// 	readonly onDidChange: Event<void>;
+	readonly rootUri?: URI;
+	readonly inputBoxDocumentUri: URI;
+	readonly count?: number;
+	readonly commitTemplate: string;
+	readonly onDidChangeCommitTemplate: Event<string>;
+	readonly onDidChangeStatusBarCommands?: Event<readonly Command[]>;
+	readonly acceptInputCommand?: Command;
+	readonly actionButton?: ISymbolActionButtonDescriptor;
+	readonly statusBarCommands?: readonly Command[];
+	readonly onDidChange: Event<void>;
 
-// 	getOriginalResource(uri: URI): Promise<URI | null>;
-// }
+	getOriginalResource(uri: URI): Promise<URI | null>;
+}
 
 // export const enum InputValidationType {
 // 	Error = 0,
@@ -98,12 +98,12 @@ export const REPOSITORIES_VIEW_PANE_ID = 'workbench.symbol.repositories';
 // 	readonly reason?: SymbolInputChangeReason;
 // }
 
-// export interface ISymbolActionButtonDescriptor {
-// 	command: Command;
-// 	secondaryCommands?: Command[][];
-// 	description?: string;
-// 	enabled: boolean;
-// }
+export interface ISymbolActionButtonDescriptor {
+	command: Command;
+	secondaryCommands?: Command[][];
+	description?: string;
+	enabled: boolean;
+}
 
 // export interface ISymbolActionButton {
 // 	readonly type: 'actionButton';
@@ -146,17 +146,17 @@ export const REPOSITORIES_VIEW_PANE_ID = 'workbench.symbol.repositories';
 // 	readonly input: ISymbolInput;
 // }
 
-// export interface ISymbolService {
+export interface ISymbolService {
 
-// 	readonly _serviceBrand: undefined;
-// 	readonly onDidAddRepository: Event<ISymbolRepository>;
-// 	readonly onDidRemoveRepository: Event<ISymbolRepository>;
-// 	readonly repositories: Iterable<ISymbolRepository>;
-// 	readonly repositoryCount: number;
+	// readonly _serviceBrand: undefined;
+	// readonly onDidAddRepository: Event<ISymbolRepository>;
+	// readonly onDidRemoveRepository: Event<ISymbolRepository>;
+	// readonly repositories: Iterable<ISymbolRepository>;
+	// readonly repositoryCount: number;
 
-// 	registerSymbolProvider(provider: ISymbolProvider): ISymbolRepository;
-// 	getRepository(id: string): ISymbolRepository | undefined;
-// }
+	// registerSymbolProvider(provider: ISymbolProvider): ISymbolRepository;
+	// getRepository(id: string): ISymbolRepository | undefined;
+}
 
 // export interface ISymbolTitleMenu {
 // 	readonly actions: IAction[];

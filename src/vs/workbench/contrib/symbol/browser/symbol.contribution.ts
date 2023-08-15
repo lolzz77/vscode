@@ -8,8 +8,8 @@ import { Registry } from 'vs/platform/registry/common/platform';
 // import { IWorkbenchContributionsRegistry, Extensions as WorkbenchExtensions } from 'vs/workbench/common/contributions';
 // import { DirtyDiffWorkbenchController } from './dirtydiffDecorator';
 // import { VIEWLET_ID, ISymbolService, VIEW_PANE_ID, ISymbolProvider, ISymbolViewService, REPOSITORIES_VIEW_PANE_ID } from 'vs/workbench/contrib/symbol/common/symbol';
-import { VIEWLET_ID } from 'vs/workbench/contrib/symbol/common/symbol';
-// import { KeyMod, KeyCode } from 'vs/base/common/keyCodes';
+import { VIEWLET_ID, VIEW_PANE_ID } from 'vs/workbench/contrib/symbol/common/symbol';
+import { KeyMod, KeyCode } from 'vs/base/common/keyCodes';
 // import { MenuRegistry, MenuId } from 'vs/platform/actions/common/actions';
 // import { SCMActiveResourceContextKeyController, SCMStatusController } from './activity';
 // import { LifecyclePhase } from 'vs/workbench/services/lifecycle/common/lifecycle';
@@ -25,7 +25,7 @@ import { SyncDescriptor } from 'vs/platform/instantiation/common/descriptors';
 // import { ModesRegistry } from 'vs/editor/common/languages/modesRegistry';
 import { Codicon } from 'vs/base/common/codicons';
 import { registerIcon } from 'vs/platform/theme/common/iconRegistry';
-// import { SCMViewPane } from 'vs/workbench/contrib/scm/browser/scmViewPane';
+import { SymbolViewPane } from 'vs/workbench/contrib/symbol/browser/symbolViewPane';
 // import { SCMViewService } from 'vs/workbench/contrib/scm/browser/scmViewService';
 // import { SCMRepositoriesViewPane } from 'vs/workbench/contrib/scm/browser/scmRepositoriesViewPane';
 // import { ServicesAccessor } from 'vs/platform/instantiation/common/instantiation';
@@ -44,8 +44,8 @@ import { registerIcon } from 'vs/platform/theme/common/iconRegistry';
 // Registry.as<IWorkbenchContributionsRegistry>(WorkbenchExtensions.Workbench)
 // 	.registerWorkbenchContribution(DirtyDiffWorkbenchController, LifecyclePhase.Restored);
 
-// // icon here
-const symbolViewIcon = registerIcon('symbol-view-icon', Codicon.sourceControl, localize('symbolViewIcon', 'View icon of the Symbol view.'));
+// icon here
+const symbolViewIcon = registerIcon('symbol-view-icon', Codicon.symbol, localize('symbolViewIcon', 'View icon of the Symbol view.'));
 
 const viewContainer = Registry.as<IViewContainersRegistry>(ViewContainerExtensions.ViewContainersRegistry).registerViewContainer({
 	id: VIEWLET_ID,
@@ -59,7 +59,7 @@ const viewContainer = Registry.as<IViewContainersRegistry>(ViewContainerExtensio
 	hideIfEmpty: true,
 }, ViewContainerLocation.Sidebar, { doNotRegisterOpenCommand: true });
 
-// const viewsRegistry = Registry.as<IViewsRegistry>(ViewContainerExtensions.ViewsRegistry);
+const viewsRegistry = Registry.as<IViewsRegistry>(ViewContainerExtensions.ViewsRegistry);
 
 // viewsRegistry.registerViewWelcomeContent(VIEW_PANE_ID, {
 // 	content: localize('no open repo', "No source control providers registered."),
@@ -76,30 +76,30 @@ const viewContainer = Registry.as<IViewContainersRegistry>(ViewContainerExtensio
 // 	when: ContextKeyExpr.and(ContextKeyExpr.equals('scm.providerCount', 0), WorkspaceTrustContext.IsEnabled, WorkspaceTrustContext.IsTrusted.toNegated())
 // });
 
-// // here register it to the sidebar
-// // usually will be in file that has name 'contribution'
-// // scm in the file name refers to source control manager?
-// viewsRegistry.registerViews([{
-// 	id: VIEW_PANE_ID,
-// 	name: localize('source control', "Source Control"),
-// 	ctorDescriptor: new SyncDescriptor(SCMViewPane),
-// 	canToggleVisibility: true,
-// 	canMoveView: true,
-// 	weight: 80,
-// 	order: -999,
-// 	containerIcon: sourceControlViewIcon,
-// 	openCommandActionDescriptor: {
-// 		id: viewContainer.id,
-// 		mnemonicTitle: localize({ key: 'miViewSCM', comment: ['&& denotes a mnemonic'] }, "Source &&Control"),
-// 		keybindings: {
-// 			primary: 0,
-// 			win: { primary: KeyMod.CtrlCmd | KeyMod.Shift | KeyCode.KeyG },
-// 			linux: { primary: KeyMod.CtrlCmd | KeyMod.Shift | KeyCode.KeyG },
-// 			mac: { primary: KeyMod.WinCtrl | KeyMod.Shift | KeyCode.KeyG },
-// 		},
-// 		order: 2,
-// 	}
-// }], viewContainer);
+// here register it to the sidebar
+// usually will be in file that has name 'contribution'
+// scm in the file name refers to source control manager?
+viewsRegistry.registerViews([{
+	id: VIEW_PANE_ID,
+	name: localize('symbol E', "symbol F"),
+	ctorDescriptor: new SyncDescriptor(SymbolViewPane),
+	canToggleVisibility: true,
+	canMoveView: true,
+	weight: 80,
+	order: -999,
+	containerIcon: symbolViewIcon,
+	openCommandActionDescriptor: {
+		id: viewContainer.id,
+		mnemonicTitle: localize({ key: 'miViewSCM', comment: ['&& denotes a mnemonic'] }, "Source &&Control"),
+		keybindings: {
+			primary: 0,
+			win: { primary: KeyMod.CtrlCmd | KeyMod.Shift | KeyCode.KeyG },
+			linux: { primary: KeyMod.CtrlCmd | KeyMod.Shift | KeyCode.KeyG },
+			mac: { primary: KeyMod.WinCtrl | KeyMod.Shift | KeyCode.KeyG },
+		},
+		order: 2,
+	}
+}], viewContainer);
 
 // viewsRegistry.registerViews([{
 // 	id: REPOSITORIES_VIEW_PANE_ID,

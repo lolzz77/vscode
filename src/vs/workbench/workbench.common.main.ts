@@ -212,8 +212,8 @@ import 'vs/workbench/contrib/sash/browser/sash.contribution';
 // SCM
 // here will import
 import 'vs/workbench/contrib/scm/browser/scm.contribution';
-
 import 'vs/workbench/contrib/symbol/browser/symbol.contribution';
+
 
 // Debug
 import 'vs/workbench/contrib/debug/browser/debug.contribution';
