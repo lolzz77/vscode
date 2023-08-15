@@ -64,7 +64,7 @@ export abstract class BaseEditorQuickAccessProvider extends PickerQuickAccessPro
 
 		// Reset the pick state for this run
 		this.pickState.reset(!!picker.quickNavigate);
-
+		console.log('editorQuickAccess.ts');
 		// Start picker
 		return super.provide(picker, token);
 	}

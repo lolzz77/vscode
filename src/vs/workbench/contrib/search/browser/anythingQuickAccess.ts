@@ -239,7 +239,7 @@ export class AnythingQuickAccessProvider extends PickerQuickAccessProvider<IAnyt
 				this.pickState.restoreEditorViewState();
 			}
 		}));
-
+		console.log('this is when you press CTRL + P, that is, open the window without any prefix like >, @, @:');
 		// Start picker
 		disposables.add(super.provide(picker, token, runOptions));
 

@@ -35,7 +35,6 @@ export interface IGotoSymbolQuickAccessProviderOptions extends IEditorNavigation
 }
 
 export abstract class AbstractGotoSymbolQuickAccessProvider extends AbstractEditorNavigationQuickAccessProvider {
-
 	static PREFIX = '@';
 	static SCOPE_PREFIX = ':';
 	static PREFIX_BY_CATEGORY = `${AbstractGotoSymbolQuickAccessProvider.PREFIX}${AbstractGotoSymbolQuickAccessProvider.SCOPE_PREFIX}`;
@@ -77,7 +76,9 @@ export abstract class AbstractGotoSymbolQuickAccessProvider extends AbstractEdit
 		return this.doProvideWithoutEditorSymbols(context, model, picker, token);
 	}
 
+	//i suspect whenever no symbol to provide, trigger this instead
 	private doProvideWithoutEditorSymbols(context: IQuickAccessTextEditorContext, model: ITextModel, picker: IQuickPick<IGotoSymbolQuickPickItem>, token: CancellationToken): IDisposable {
+
 		const disposables = new DisposableStore();
 
 		// Generic pick for not having any symbol information
@@ -105,6 +106,7 @@ export abstract class AbstractGotoSymbolQuickAccessProvider extends AbstractEdit
 		picker.ariaLabel = label;
 	}
 
+	// i suspect this is loading/scanning for symbols
 	protected async waitForLanguageSymbolRegistry(model: ITextModel, disposables: DisposableStore): Promise<boolean> {
 		if (this._languageFeaturesService.documentSymbolProvider.has(model)) {
 			return true;
@@ -127,7 +129,10 @@ export abstract class AbstractGotoSymbolQuickAccessProvider extends AbstractEdit
 		return symbolProviderRegistryPromise.p;
 	}
 
+	// couldn't test this
+	// i suspect whenever there's symbol to provide, it will trigger this
 	private doProvideWithEditorSymbols(context: IQuickAccessTextEditorContext, model: ITextModel, picker: IQuickPick<IGotoSymbolQuickPickItem>, token: CancellationToken): IDisposable {
+
 		const editor = context.editor;
 		const disposables = new DisposableStore();
 
