@@ -337,6 +337,7 @@ export abstract class AbstractGotoSymbolQuickAccessProvider extends AbstractEdit
 			this.compareByScore(symbolA, symbolB)
 		);
 
+		// Here the '@' and '@:'
 		// Add separator for types
 		// - @  only total number of symbols
 		// - @: grouped by symbol kind
