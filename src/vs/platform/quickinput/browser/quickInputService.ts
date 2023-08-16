@@ -95,6 +95,7 @@ export class QuickInputService extends Themable implements IQuickInputService {
 			styles: this.computeStyles()
 		};
 
+		// from here, this controller is from quickInputs.
 		const controller = this._register(new QuickInputController({
 			...defaultOptions,
 			...options
@@ -109,6 +110,7 @@ export class QuickInputService extends Themable implements IQuickInputService {
 		this._register(controller.onShow(() => {
 			// console.log('whenever you trigger the quick input, this will fire, like F1, CTRL + P, or CTRL + SHIFT + P, CTRL + SHIFT + O');
 			this.resetContextKeys();
+			// it seems, comment this out, the pop up window still show
 			this._onShow.fire();
 		}));
 		this._register(controller.onHide(() => {
@@ -152,14 +154,22 @@ export class QuickInputService extends Themable implements IQuickInputService {
 	}
 
 	input(options: IInputOptions = {}, token: CancellationToken = CancellationToken.None): Promise<string | undefined> {
+		// comment this out, window still can type
 		return this.controller.input(options, token);
 	}
 
+	// find out who call this
+	// got 2 files, quickInputService and quickInput
+	// cant find who called this
+	// the controller is from quickInput
+	// thus, this class wrap it again
 	createQuickPick<T extends IQuickPickItem>(): IQuickPick<T> {
+		// this one will render the pop up window when you press F1, CTRL + P, etc
 		return this.controller.createQuickPick();
 	}
 
 	createInputBox(): IInputBox {
+		// comment this out, window still can type
 		return this.controller.createInputBox();
 	}
 

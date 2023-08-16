@@ -240,6 +240,9 @@ export class AnythingQuickAccessProvider extends PickerQuickAccessProvider<IAnyt
 			}
 		}));
 		console.log('this is when you press CTRL + P, that is, open the window without any prefix like >, @, @:');
+		// this one will list down lists.
+		// CTRL + P, will list down current opened editor
+		// if you comment this out, the pop up still there, but no list
 		// Start picker
 		disposables.add(super.provide(picker, token, runOptions));
 

@@ -1306,7 +1306,10 @@ export class QuickInputController extends Disposable {
 		this._register(dom.addDisposableListener(window, dom.EventType.MOUSE_DOWN, listener, true));
 	}
 
+	// this is the window pop up UI, when u press F1, CTRL + P, etc
 	private getUI() {
+		// return;
+
 		if (this.ui) {
 			return this.ui;
 		}
@@ -1712,13 +1715,16 @@ export class QuickInputController extends Disposable {
 
 	backButton = backButton;
 
+	// find out who calls this
 	createQuickPick<T extends IQuickPickItem>(): IQuickPick<T> {
 		const ui = this.getUI();
+		// this one block will pop up the window when u press F1, CTRL + P, etc
 		return new QuickPick<T>(ui);
 	}
 
 	createInputBox(): IInputBox {
 		const ui = this.getUI();
+		// this one i dk for what
 		return new InputBox(ui);
 	}
 

@@ -104,6 +104,7 @@ export class StandaloneQuickInputService implements IQuickInputService {
 	}
 
 	createQuickPick<T extends IQuickPickItem>(): IQuickPick<T> {
+		// comment this out, window still pops up when press F1, CTRL + P, etc
 		return this.activeService.createQuickPick();
 	}
 

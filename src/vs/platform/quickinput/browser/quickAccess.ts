@@ -143,6 +143,7 @@ export class QuickAccessController extends Disposable implements IQuickAccessCon
 			pickPromise?.complete(picker.selectedItems.slice(0));
 		});
 
+		// HERE WILL SHOW THE WINDOW POP UP WHEN U PRESS F1, CTRL + P!!!!!!!!!!!!!!
 		// Finally, show the picker. This is important because a provider
 		// may not call this and then our disposables would leak that rely
 		// on the onDidHide event.

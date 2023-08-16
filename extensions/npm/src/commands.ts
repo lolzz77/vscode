@@ -38,6 +38,7 @@ export async function selectAndRunScriptFromFolder(context: vscode.ExtensionCont
 	const taskList: IFolderTaskItem[] = await detectNpmScriptsForFolder(context, selectedFolder);
 
 	if (taskList && taskList.length > 0) {
+		// createQuickPick, but it is for IFodlerTaskItem it seems
 		const quickPick = vscode.window.createQuickPick<IFolderTaskItem>();
 		quickPick.placeholder = 'Select an npm script to run in folder';
 		quickPick.items = taskList;
@@ -54,6 +55,7 @@ export async function selectAndRunScriptFromFolder(context: vscode.ExtensionCont
 				c(undefined);
 			}));
 		});
+		// comment this out, window still pops up when pressing F1, CTRL + P, etc
 		quickPick.show();
 		const result = await pickPromise;
 		quickPick.dispose();

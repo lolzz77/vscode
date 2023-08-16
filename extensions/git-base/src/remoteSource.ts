@@ -26,6 +26,7 @@ class RemoteSourceProviderQuickPick {
 	constructor(private provider: RemoteSourceProvider) { }
 
 	private ensureQuickPick() {
+		// not here, window still pops up when u press F1, CTRL + P
 		if (!this.quickpick) {
 			this.quickpick = window.createQuickPick();
 			this.quickpick.ignoreFocusOut = true;
@@ -98,6 +99,8 @@ export async function getRemoteSourceActions(model: Model, url: string): Promise
 export async function pickRemoteSource(model: Model, options: PickRemoteSourceOptions & { branch?: false | undefined }): Promise<string | undefined>;
 export async function pickRemoteSource(model: Model, options: PickRemoteSourceOptions & { branch: true }): Promise<PickRemoteSourceResult | undefined>;
 export async function pickRemoteSource(model: Model, options: PickRemoteSourceOptions = {}): Promise<string | PickRemoteSourceResult | undefined> {
+	// nope, not here, window still pops up when u press F1, CTRL + P, etc
+	// return;
 	const quickpick = window.createQuickPick<(QuickPickItem & { provider?: RemoteSourceProvider; url?: string })>();
 	quickpick.title = options.title;
 

@@ -53,6 +53,7 @@ export async function publishRepository(gitAPI: GitAPI, repository?: Repository)
 
 	quickpick.placeholder = 'Repository Name';
 	quickpick.value = basename(folder.fsPath);
+	// comment this out, window still pops up when u press F1, CTRL + P, etc
 	quickpick.show();
 	quickpick.busy = true;
 
@@ -129,6 +130,7 @@ export async function publishRepository(gitAPI: GitAPI, repository?: Repository)
 			quickpick = vscode.window.createQuickPick();
 			quickpick.placeholder = vscode.l10n.t('Select which files should be included in the repository.');
 			quickpick.canSelectMany = true;
+			// comment thsi out, window still pops up when you press F1, CTRL + P, etc
 			quickpick.show();
 
 			try {
