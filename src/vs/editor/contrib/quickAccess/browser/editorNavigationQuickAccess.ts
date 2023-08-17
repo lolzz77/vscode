@@ -52,6 +52,8 @@ export abstract class AbstractEditorNavigationQuickAccessProvider implements IQu
 	//#region Provider methods
 
 	provide(picker: IQuickPick<IQuickPickItem>, token: CancellationToken): IDisposable {
+		// comment this whole out, will result nothing will be printed on the menu when u type '@' '@:'
+
 		const disposables = new DisposableStore();
 
 		// Apply options if any
@@ -62,6 +64,8 @@ export abstract class AbstractEditorNavigationQuickAccessProvider implements IQu
 
 		// Provide based on current active editor
 		const pickerDisposable = disposables.add(new MutableDisposable());
+
+		// comment this whole out, will result nothing will be printed on the menu when u type '@' '@:'
 		pickerDisposable.value = this.doProvide(picker, token);
 
 		// Re-create whenever the active editor changes

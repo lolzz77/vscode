@@ -833,6 +833,7 @@ class QuickPick<T extends IQuickPickItem> extends QuickInput implements IQuickPi
 		if (!this.visible) {
 			this.visibleDisposables.add(
 				this.ui.inputBox.onDidChange(value => {
+					// comment this out, when you type, it wont change the result
 					this.doSetValue(value, true /* skip update since this originates from the UI */);
 				}));
 			this.visibleDisposables.add(this.ui.inputBox.onMouseDown(event => {
@@ -1330,6 +1331,7 @@ export class QuickInputController extends Disposable {
 		const rightActionBar = this._register(new ActionBar(titleBar));
 		rightActionBar.domNode.classList.add('quick-input-right-action-bar');
 
+		// you can search the name in dev tool
 		const headerContainer = dom.append(container, $('.quick-input-header'));
 
 		const checkAll = <HTMLInputElement>dom.append(headerContainer, $('input.quick-input-check-all'));
@@ -1346,9 +1348,12 @@ export class QuickInputController extends Disposable {
 		}));
 
 		const description2 = dom.append(headerContainer, $('.quick-input-description'));
+		// this is the wrapper for the input box
 		const inputContainer = dom.append(headerContainer, $('.quick-input-and-message'));
 		const filterContainer = dom.append(inputContainer, $('.quick-input-filter'));
 
+		// this is the input box class, search "<input class="input" " in the dev tool
+		// you can search 'aria-describedby' keyword also
 		const inputBox = this._register(new QuickInputBox(filterContainer, this.styles.inputBox, this.styles.toggle));
 		inputBox.setAttribute('aria-describedby', `${this.idPrefix}message`);
 
