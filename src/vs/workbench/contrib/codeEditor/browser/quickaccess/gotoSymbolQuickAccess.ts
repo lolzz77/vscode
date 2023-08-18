@@ -267,6 +267,7 @@ class GotoSymbolAction extends Action2 {
 
 registerAction2(GotoSymbolAction);
 
+// comment this out, quick input window will not support the goto symbol feature
 Registry.as<IQuickAccessRegistry>(QuickaccessExtensions.Quickaccess).registerQuickAccessProvider({
 	ctor: GotoSymbolQuickAccessProvider,
 	prefix: AbstractGotoSymbolQuickAccessProvider.PREFIX,

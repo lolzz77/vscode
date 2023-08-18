@@ -115,6 +115,7 @@ export abstract class AbstractEditorNavigationQuickAccessProvider implements IQu
 			// Clean up decorations on dispose
 			disposables.add(toDisposable(() => this.clearDecorations(editor)));
 
+			// comment this out will result in not printing the list in the menu
 			// Ask subclass for entries
 			disposables.add(this.provideWithTextEditor(context, picker, token));
 		}

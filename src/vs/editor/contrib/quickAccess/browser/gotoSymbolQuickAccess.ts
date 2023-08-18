@@ -65,15 +65,17 @@ export abstract class AbstractGotoSymbolQuickAccessProvider extends AbstractEdit
 			return Disposable.None;
 		}
 
+		// force it to doProvideWithEditorSymbols
+
 		// Provide symbols from model if available in registry
-		if (this._languageFeaturesService.documentSymbolProvider.has(model)) {
-			return this.doProvideWithEditorSymbols(context, model, picker, token);
-		}
+		// if (this._languageFeaturesService.documentSymbolProvider.has(model)) {
+		return this.doProvideWithEditorSymbols(context, model, picker, token);
+		// }
 
 		// Otherwise show an entry for a model without registry
 		// But give a chance to resolve the symbols at a later
 		// point if possible
-		return this.doProvideWithoutEditorSymbols(context, model, picker, token);
+		// return this.doProvideWithoutEditorSymbols(context, model, picker, token);
 	}
 
 	//i suspect whenever no symbol to provide, trigger this instead
@@ -190,7 +192,8 @@ export abstract class AbstractGotoSymbolQuickAccessProvider extends AbstractEdit
 						}
 					}
 
-				} else {
+				}
+				else {
 					if (query.original.length > 0) {
 						this.provideLabelPick(picker, localize('noMatchingSymbolResults', "No matching editor symbols"));
 					} else {

@@ -97,6 +97,8 @@ import { ITelemetryService } from 'vs/platform/telemetry/common/telemetry';
 // import { ElementsDragAndDropData } from 'vs/base/browser/ui/list/listView';
 // import { CodeDataTransfers } from 'vs/platform/dnd/browser/dnd';
 
+import { AnythingQuickAccessProvider } from 'vs/workbench/contrib/search/browser/anythingQuickAccess';
+
 // type TreeElement = ISCMRepository | ISCMInput | ISCMActionButton | ISCMResourceGroup | IResourceNode<ISCMResource, ISCMResourceGroup> | ISCMResource;
 
 interface ISymbolLayout {
@@ -2321,10 +2323,14 @@ export class SymbolViewPane extends ViewPane {
 			onDidChange: this._onDidLayout.event
 		};
 
+		// AnythingQuickAccessProvider._getPicks();
+
 		// this._register(this.instantiationService.createInstance(ScmInputContentProvider));
 
 		// this._register(Event.any(this.scmService.onDidAddRepository, this.scmService.onDidRemoveRepository)(() => this._onDidChangeViewWelcomeState.fire()));
 	}
+
+
 
 	// protected override renderBody(container: HTMLElement): void {
 	// 	super.renderBody(container);
