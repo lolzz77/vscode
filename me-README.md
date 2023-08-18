@@ -39,7 +39,7 @@ I hv a feeling they dont allow end user to build vs code on their own?..
 - this list out all path that has this `node` binary executable
 7. from my system, i found the `node` the system is using, and the location of latest `node` i installed
 8. thus, i run the command
-- `rm /usr/local/bin/node`
+- `sudo rm /usr/local/bin/node`
 - `sudo ln -s /usr/bin/node /usr/local/bin/node`
 9. run `yarn install`
 10. then run `yarn watch`
